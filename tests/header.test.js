@@ -1,4 +1,5 @@
 const Page = require("./helpers/page");
+const mongoose = require("mongoose");
 
 let page;
 
@@ -9,6 +10,10 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await page.close();
+});
+
+afterAll(() => {
+  mongoose.connection.close();
 });
 
 test("should render logo correctly", async () => {
